@@ -1,0 +1,30 @@
+<div id="main">
+  <%= image_tag "/main-img.jpg" %>
+</div>
+
+<div id="article_wrap">
+
+  <% @articles.each do |article| %>
+    <div id="article_list">
+      <div>
+        <h2><%= article.title %></h2>
+        <p><%= article.content %></p>
+        <% if user_signed_in? %>
+          <td>編集</td>
+          <td>削除</td>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <div id="sidebar">
+
+    <h2>★PV数ランキング</h2>
+    <ul>
+      <li><a href="">記事タイトル記事タイトル１記事タイトル記事タイトル<span>（10PV）</span></a></li>
+      <li><a href="">記事タイトル記事タイトル１記事タイトル記事タイトル<span>（8PV）</span></a></li>
+      <li><a href="">記事タイトル記事タイトル１記事タイトル記事タイトル<span>（2PV）</span></a></li>
+    </ul>
+  </div>
+  <div class="clear"></div>
+</div>

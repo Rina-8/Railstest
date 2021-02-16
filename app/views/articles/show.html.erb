@@ -1,0 +1,25 @@
+<div id="title">
+  <div>
+    <p><%= @article.created_at.strftime('%Y/%m/%d') %>/書いた人</p>
+    <h1><%= @article.title %></h1>
+  </div>
+</div>
+
+<div id="article_wrap">
+
+  <div id="content">
+    <%= @article.content %>
+  </div>
+
+
+  <div id="sidebar">
+
+    <h2>★PV数ランキング</h2>
+    <ul>
+      <li><a href="">記事タイトル記事タイトル１記事タイトル記事タイトル<span>（10PV）</span></a></li>
+      <li><a href="">記事タイトル記事タイトル１記事タイトル記事タイトル<span>（8PV）</span></a></li>
+      <li><a href="">記事タイトル記事タイトル１記事タイトル記事タイトル<span>（2PV）</span></a></li>
+    </ul>
+  </div>
+  <div class="clear"></div>
+</div>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head lang="ja">
+  <meta charset="UTF-8">
+  <title>Rails Camp Blog</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <p id="logo"><a href="">RailsCamp<span>Blog</span></a></p>
+      <% if user_signed_in? %>
+        <nav>
+          <ul>
+            <li><%= link_to "トップ", '/' %></li>
+            <li>新規投稿</li>
+            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+            <div class="clear"></div>
+          </ul>
+        </nav>
+      <% else %>
+        <nav>
+          <ul>
+            <li><%= link_to  "トップ", '/'  %></li>
+            <li><%= link_to "新規登録", new_user_registration_path, class: 'post' %></li>
+            <li><%= link_to "ログイン", new_user_session_path, class: 'post' %></li>
+            <div class="clear"></div>
+          </ul>
+        </nav>
+      <% end %>
+      <div class="clear"></div>
+    </header>
+    <%= yield %>
+    <footer>
+      <div id="footer_inner">
+        <p>Copyright RailsCamp 2015 All Rights Reserved</p>
+      </div>
+    </footer>
+  </body>
+
+</html>
