@@ -1,10 +1,13 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show]
+
+
   def index
     @articles = Article.all
   end
 
   def show
+    @user = User.find_by(id: @article.user_id)
   end
 
   def new
@@ -26,6 +29,6 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :content)
+    params.require(:article).permit(:title, :content).merge(user_id: current_user.id)
   end
 end

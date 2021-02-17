@@ -8,7 +8,7 @@
     <div id="article_list">
       <div>
         <h2><%= article.title %></h2>
-        <p><%= article.content %></p>
+        <p><%= article.created_at.strftime('%Y/%m/%d') %></p>
         <% if user_signed_in? %>
           <td>編集</td>
           <td>削除</td>
