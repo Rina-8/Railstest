@@ -1,3 +1,4 @@
 require 'redis'
-uri = URI.parse('localhost:6379')
+
+uri = URI.parse(ENV["REDIS"])
 REDIS = Redis.new(host: uri.host, port: uri.port)

@@ -7,7 +7,7 @@
   <% @articles.each do |article| %>
     <div id="article_list">
       <div>
-        <h2><%= article.title %></h2>
+        <h2><%= link_to article.title, article_url(article.id)  %></h2>
         <p><%= article.created_at.strftime('%Y/%m/%d') %></p>
         <% if user_signed_in? %>
           <td><%= link_to "編集", edit_article_path(article) %></td>
@@ -21,9 +21,9 @@
 
     <h2>★PV数ランキング</h2>
     <ul>
-      <li><a href="">記事タイトル記事タイトル１記事タイトル記事タイトル<span>（10PV）</span></a></li>
-      <li><a href="">記事タイトル記事タイトル１記事タイトル記事タイトル<span>（8PV）</span></a></li>
-      <li><a href="">記事タイトル記事タイトル１記事タイトル記事タイトル<span>（2PV）</span></a></li>
+      <% @articles.each do |article| %>
+        <li><a href="/articles/<%= article.id %>"><%= article.title %><span>（<%= @ranking_articles.count %> PV）</span></a></li>
+      <% end %>
     </ul>
   </div>
   <div class="clear"></div>
