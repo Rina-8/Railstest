@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show]
+  before_action :authenticate_user!, only: [:edit, :update, :destroy]
 
   def index
     @articles = Article.all
@@ -24,22 +25,30 @@ class ArticlesController < ApplicationController
 
   def edit
     @article = Article.find_by(id: params[:id])
+    if @article.user_id != current_user.id
+      flash[:notice] = "Not yours"
+      redirect_to '/'
+    end
   end
 
   def update
     @article = Article.find_by(id: params[:id])
-    if @article.update(article_params)
+    if @article.user_id == current_user.id
+      @article.update(article_params)
       @article.save
       redirect_to(article_url(@article.id))
-    else
-      render :edit
     end
   end
 
   def destroy
     @article = Article.find_by(id: params[:id])
-    @article.destroy
-    redirect_to '/'
+    if @article.user_id == current_user.id
+      @article.destroy
+      redirect_to '/'
+    else
+      flash[:notice] = "Not yours"
+      redirect_to '/'
+    end
   end
 
   private
