@@ -35,6 +35,9 @@
       <% end %>
       <div class="clear"></div>
     </header>
+    <% if flash[:notice] %>
+      <%= flash[:notice] %>
+    <% end %>
     <%= yield %>
     <footer>
       <div id="footer_inner">

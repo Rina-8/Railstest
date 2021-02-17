@@ -1,7 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show]
 
-
   def index
     @articles = Article.all
   end
@@ -21,6 +20,26 @@ class ArticlesController < ApplicationController
     else
       render 'articles/new'
     end
+  end
+
+  def edit
+    @article = Article.find_by(id: params[:id])
+  end
+
+  def update
+    @article = Article.find_by(id: params[:id])
+    if @article.update(article_params)
+      @article.save
+      redirect_to(article_url(@article.id))
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @article = Article.find_by(id: params[:id])
+    @article.destroy
+    redirect_to '/'
   end
 
   private

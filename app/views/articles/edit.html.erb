@@ -1,0 +1,12 @@
+<%= form_with model: @article, local: true do |f| %>
+  <div class="form-group">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div><br>
+  <div class="form-group">
+    <%= f.label :content %><br>
+    <%= f.text_area :content %>
+  </div><br>
+  <%= f.submit nil %>
+<% end %>
+<br>
