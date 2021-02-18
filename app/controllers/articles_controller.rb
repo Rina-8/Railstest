@@ -4,10 +4,13 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.all
+    @rankinga = REDIS.zrevrange "ranking/#{Date.today.to_s}", 0, 2, withscores: true
   end
 
   def show
+    @articles = Article.all
     @user = User.find_by(id: @article.user_id)
+    REDIS.zincrby "ranking/#{@article.id}/#{Date.today.to_s}", 1, "#{@article.id}"
   end
 
   def new
