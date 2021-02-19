@@ -16,15 +16,15 @@
 
     <h2>★PV数ランキング</h2>
       <ul>
-      <% @ranking.each do |rank| %>
-      <li>
-        <% article = Article.find_by(title: rank.first) %>
-        <%= link_to rank.first, articles_path(article) %>
-        <span>
-          <%= " (#{rank.last.to_i.floor}PV)" %>
-        </span>
-      </li>
-      <% end %>
+        <% @ranking.each do |rank| %>
+          <li>
+            <% article = Article.find_by(title: rank.first) %>
+            <%= link_to rank.first, articles_path(article) %>
+            <span>
+              <%= " (#{rank.last.to_i.floor}PV)" %>
+            </span>
+          </li>
+        <% end %>
       </ul>
   </div>
   <div class="clear"></div>
