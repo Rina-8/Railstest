@@ -6,7 +6,7 @@
 * How to run the test suite
 
 1. git clone
-  - Please do git clone provided below
+    - Please do git clone provided below
 ```
 $ mkdir rails
 $ cd rails
