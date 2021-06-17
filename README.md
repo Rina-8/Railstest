@@ -21,12 +21,12 @@ $ bundle install
 
 3. Create db and migrate schema
 ```
-rails db:migrate
+$ rails db:migrate
 ```
 
 4. Now run Railstest application
 ```
-rails s
+$ rails s
 ```
 
 5. Go to chrome
