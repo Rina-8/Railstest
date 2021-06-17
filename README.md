@@ -3,8 +3,8 @@
 * Ruby version
 2.6.3
 
-* How to run the test suite
 
+### How to run the suite
 1. git clone
     - Please do git clone provided below
 ```
